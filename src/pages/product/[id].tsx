@@ -7,13 +7,14 @@ import { GetStaticProps,GetStaticPaths } from 'next'
 import { useRouter } from 'next/router'
 import { stripe } from '../../lib/stripe'
 import { ImageContainer, ProductContainer, ProductDetails } from '../../styles/pages/product'
+import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
 
 interface ProductProps {
    product: {
         id:string,
         name:string,
         imageUrl:string,
-        price: string,
+        price: number,
         description:string,
         defaultPriceId:string,
    }
@@ -22,6 +23,8 @@ interface ProductProps {
 export default function ProductId({ product }: ProductProps) {
   
     const { isFallback } = useRouter()
+
+    const { addItem } = useShoppingCart()
 
     if(isFallback) {
         return <p>Loading ...</p>
@@ -42,6 +45,8 @@ export default function ProductId({ product }: ProductProps) {
         }
     }
 
+
+
     return (
     <>
     <Head>
@@ -53,10 +58,10 @@ export default function ProductId({ product }: ProductProps) {
         </ImageContainer>
         <ProductDetails>
             <h1>{product.name}</h1>
-            <span>{product.price}</span>
+            <span>{formatCurrencyString({ value: product.price, currency: 'BRL' })}</span>
             <p>{product.description}</p>
 
-            <button onClick={handleBuyProduct}>Comprar Agora</button>
+            <button onClick={() => addItem(product, { count: 1 })}>Colocar na sacola</button>
 
         </ProductDetails>
     </ProductContainer>
@@ -87,10 +92,7 @@ export const getStaticProps: GetStaticProps<any,{ id:string }> = async ({ params
                 id: product.id,
                 name: product.name,
                 imageUrl: product.images[0],
-                price: new Intl.NumberFormat('pt-BR', {
-                  style:'currency',
-                  currency:'BRL'
-                }).format(price.unit_amount / 100),
+                price: price.unit_amount,
                 description: product.description,
                 defaultPriceId:price.id
             }

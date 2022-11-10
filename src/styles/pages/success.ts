@@ -1,4 +1,4 @@
-import { styled } from "..";
+import { styled } from "@stitches/react";
 
 export const SuccessContainer = styled('main',{ 
 

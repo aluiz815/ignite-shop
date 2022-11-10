@@ -1,4 +1,4 @@
-import { styled } from "..";
+import { styled } from "@stitches/react";
 
 export const HomeContainer = styled('main', {
     display: 'flex',
@@ -53,9 +53,21 @@ export const Product = styled('div', {
         fontSize:'$xl',
         fontWeight:'bold',
         color:'$green300'
+    },
+
+    button: {
+
+      background:'$green500',
+      padding:'0.75rem',
+      borderRadius:'6px',
+      border:'0px',
+      cursor:'pointer',
+      svg: {
+        color:'$white'
+      }
+
     }
-
-
+    
 
   },
 

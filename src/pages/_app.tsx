@@ -1,18 +1,21 @@
 import { AppProps } from "next/app"
+import { CartProvider } from "use-shopping-cart"
 import { globalStyles } from "../styles/global"
 
 globalStyles()
-import logoImg from '../assets/logo.svg'
-import Image from "next/image"
-import { Container, Header } from "../styles/pages/app"
+import { DefaultLayout } from "./layout"
 export default function App({ Component, pageProps }: AppProps) {
+
   return (
-    <Container>
-      <Header>
-        <Image src={logoImg} alt=""/>
-      </Header>
+    <CartProvider  
+    cartMode="checkout-session"
+    stripe={process.env.STRIPE_PUBLIC_KEY}
+    currency="BRL">
+    <DefaultLayout>
       <Component {...pageProps} />
-    </Container>
+    </DefaultLayout>
+    </CartProvider>
   )
 }
+
 
