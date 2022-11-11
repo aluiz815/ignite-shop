@@ -20,9 +20,27 @@ export const Header = styled('header', {
 })
 
 
-export const IconContainer = styled('div', {
+export const IconContainer = styled('button', {
     background:'$gray800',
     padding:'0.75rem',
     borderRadius:'6px',
-    cursor:'pointer'
+    cursor:'pointer',
+    position:'relative',
+    border:'0',
+    color:'$gray200'
+});
+
+
+export const HeaderIconContainer = styled('div', {
+    color:'$white',
+    background:'$green500',
+    borderRadius:'1000px',
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center',
+    position: 'absolute',
+    width:'1.5rem',
+    height:'1.5rem',
+    top:'-10px',
+    right:'-10px'
 });

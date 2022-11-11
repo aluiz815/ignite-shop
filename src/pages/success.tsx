@@ -59,7 +59,7 @@ export default function Success({customerName,product}:SuccessProps) {
 
     const customerName = session.customer_details.name
     const product = session.line_items.data[0].price.product as Stripe.Product
-
+    console.log(session.line_items.data)
 
   return {
     props: {

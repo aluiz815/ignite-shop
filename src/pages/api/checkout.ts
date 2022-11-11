@@ -3,7 +3,7 @@ import { stripe } from '../../lib/stripe'
  
 export default async function checkout(req: NextApiRequest,res:NextApiResponse) {
     
-    const { priceId } = req.body
+    const { line_items} = req.body
 
     if(req.method !== 'POST') {
         return res.status(405).json({
@@ -11,9 +11,9 @@ export default async function checkout(req: NextApiRequest,res:NextApiResponse) 
         })
     }
 
-    if(!priceId) {
+    if(!line_items) {
         return res.status(400).json({
-            error:"Price not found"
+            error:"Products not found"
         })
     }
 
@@ -25,11 +25,7 @@ export default async function checkout(req: NextApiRequest,res:NextApiResponse) 
         success_url:successUrl,
         cancel_url:cancelUrl,
         mode:'payment',
-        line_items:[{
-            price: priceId,
-            quantity:1,
-            
-        }]
+        line_items:line_items
     })
 
 
