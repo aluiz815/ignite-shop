@@ -1,9 +1,9 @@
 import axios from 'axios'
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
 import { CardContainer, SidebarContainer } from '../styles/pages/sidebar'
-
+import {X} from 'phosphor-react'
 
 interface SidebarProps {
     isOpen: boolean
@@ -11,7 +11,7 @@ interface SidebarProps {
 
 export const Sidebar = ({isOpen}:SidebarProps) => {
 
-    const {cartDetails,removeItem,formattedTotalPrice,cartCount,clearCart } = useShoppingCart()
+    const {cartDetails,removeItem,formattedTotalPrice,cartCount,clearCart,handleCloseCart } = useShoppingCart()
     
     
     async function handleBuyProduct(){
@@ -36,8 +36,13 @@ export const Sidebar = ({isOpen}:SidebarProps) => {
     }
 
 
+    
+
   return (
-    <SidebarContainer display={isOpen ? 'flex' : 'none' } transform={isOpen ? 'show' : 'hidden'}>
+    <SidebarContainer transform={isOpen ? 'show' : 'hidden'}>
+        <button onClick={() => handleCloseCart()}>
+            <X fill='bold' size={24}/>
+        </button>
         <header>
             <h3>Sacola de compras</h3>
         </header>

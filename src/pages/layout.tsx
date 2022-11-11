@@ -4,7 +4,6 @@ import {  useShoppingCart } from "use-shopping-cart"
 import { Container, Header, HeaderIconContainer, IconContainer } from "../styles/pages/app"
 import logoImg from '../assets/logo.svg'
 import Link from "next/link"
-import { useState } from "react"
 import { Sidebar } from "./sidebar"
 
 interface DefaultLayoutProps {
@@ -13,8 +12,7 @@ interface DefaultLayoutProps {
 
 export const DefaultLayout = ({children}:DefaultLayoutProps) => {
 
-    const {cartCount} = useShoppingCart()
-    const [isOpen,setIsOpen] = useState(false)
+    const {cartCount,handleCartClick,shouldDisplayCart} = useShoppingCart()
 
   return (
     <Container>
@@ -22,13 +20,13 @@ export const DefaultLayout = ({children}:DefaultLayoutProps) => {
       <Link href="/">
         <Image src={logoImg} alt=""/>
       </Link>
-      <IconContainer onClick={() => setIsOpen(true)}>
+      <IconContainer onClick={()=>handleCartClick()}>
           <Handbag size={24} />
-          <HeaderIconContainer>{cartCount}</HeaderIconContainer>
+          {cartCount > 0 ? <HeaderIconContainer>{cartCount}</HeaderIconContainer> : ''}
       </IconContainer>
     </Header>
     {children}
-    <Sidebar isOpen={isOpen}/>
+    <Sidebar isOpen={shouldDisplayCart}/>
   </Container>
   )
 }

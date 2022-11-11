@@ -7,17 +7,27 @@ export const SidebarContainer = styled('main',{
     top: 0,
     zIndex: 100,
   
-    display: 'none',
+    display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
-  
     width: '100%',
     height: '100vh',
     maxWidth: 400,
     padding: 25,
+
   
     backgroundColor: '$gray800',
     transition: '.5s',
+
+    '> button:first-child': {
+        background:'transparent',
+        border:0,
+        color:'$gray200',
+        width: '100%',
+        display:'flex',
+        justifyContent: 'flex-end',
+        cursor:'pointer'
+    },
   
     header: {
         marginTop:'4.5rem',
