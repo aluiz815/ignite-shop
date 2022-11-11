@@ -9,7 +9,7 @@ import { stripe } from '../../lib/stripe'
 import { ImageContainer, ProductContainer, ProductDetails } from '../../styles/pages/product'
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
 
-interface ProductProps {
+export interface ProductProps {
    product: {
         id:string,
         name:string,
@@ -17,6 +17,8 @@ interface ProductProps {
         price: number,
         description:string,
         defaultPriceId:string,
+        currency:string,
+        sku:string
    }
 }
 
@@ -94,7 +96,9 @@ export const getStaticProps: GetStaticProps<any,{ id:string }> = async ({ params
                 imageUrl: product.images[0],
                 price: price.unit_amount,
                 description: product.description,
-                defaultPriceId:price.id
+                defaultPriceId:price.id,
+                currency:price.currency,
+                sku:product.id
             }
         },
         revalidate: 60  * 60 * 1

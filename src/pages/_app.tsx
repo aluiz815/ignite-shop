@@ -1,5 +1,5 @@
 import { AppProps } from "next/app"
-import { CartProvider, DebugCart } from "use-shopping-cart"
+import { CartProvider } from "use-shopping-cart"
 import { globalStyles } from "../styles/global"
 
 globalStyles()

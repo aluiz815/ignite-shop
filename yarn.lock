@@ -1897,10 +1897,10 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-use-shopping-cart@^3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/use-shopping-cart/-/use-shopping-cart-3.1.2.tgz#92295cc538aae36bc613bcecd568397da9bad126"
-  integrity sha512-TxagEZ8jlExzIETsDcqyQZ+WpPSwWCIOqSFaE66vdV7SvxBUNNVXmpjo2jSaOdDdjXvPHQcK/9hNo2kbP1ro9Q==
+use-shopping-cart@^3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/use-shopping-cart/-/use-shopping-cart-3.1.3.tgz#3b352401cc9f2ceed41f4d45f34eb55376ab51e2"
+  integrity sha512-lmHqxP7tShMiLCw4IgVXPfSBVrbftr4bm9A3h6ml6eagWUXQx0AOHwl8dy4gh6d6g2CRE7igyyQiQ2AGl+bl0A==
   dependencies:
     "@reduxjs/toolkit" "^1.5.0"
     "@stripe/stripe-js" "^1.14.0"

@@ -11,7 +11,7 @@ interface SidebarProps {
 
 export const Sidebar = ({isOpen}:SidebarProps) => {
 
-    const {cartDetails,removeItem,formattedTotalPrice,cartCount} = useShoppingCart()
+    const {cartDetails,removeItem,formattedTotalPrice,cartCount,clearCart } = useShoppingCart()
     
     
     async function handleBuyProduct(){
@@ -28,6 +28,7 @@ export const Sidebar = ({isOpen}:SidebarProps) => {
                 const { checkoutUrl } = response.data
     
                 window.location.href = checkoutUrl
+                clearCart()
             }
         } catch (err) {
             alert('Falha ao redirecionar ao checkout')
@@ -36,7 +37,7 @@ export const Sidebar = ({isOpen}:SidebarProps) => {
 
 
   return (
-    <SidebarContainer transform={isOpen ? 'show' : 'hidden'}>
+    <SidebarContainer display={isOpen ? 'flex' : 'none' } transform={isOpen ? 'show' : 'hidden'}>
         <header>
             <h3>Sacola de compras</h3>
         </header>

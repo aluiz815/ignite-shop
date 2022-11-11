@@ -7,7 +7,7 @@ export const SidebarContainer = styled('main',{
     top: 0,
     zIndex: 100,
   
-    display: 'flex',
+    display: 'none',
     flexDirection: 'column',
     alignItems: 'flex-start',
   
@@ -56,6 +56,14 @@ export const SidebarContainer = styled('main',{
     },
 
     variants: {
+        display:{
+            flex: {
+                display:'flex'
+            },
+            none: {
+                display:'none'
+            },
+        },
         transform: {
           hidden: {
             transform: 'translateX(110%)',

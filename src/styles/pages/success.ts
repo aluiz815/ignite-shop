@@ -46,8 +46,7 @@ export const ImageContainer = styled('main',{
     width: '100%',
     maxWidth: 130,
     height: 145,
-    background:'linear-gradient(180deg,#1ea483 0%,#7465d4 100%)',
-    borderRadius:8,
+    
     padding:'0.25rem',
     marginTop:'4rem',
     
@@ -55,8 +54,10 @@ export const ImageContainer = styled('main',{
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-
+    gap:'1rem',
     img: {
+        background:'linear-gradient(180deg,#1ea483 0%,#7465d4 100%)',
+        borderRadius:'50%',
         objectFit:'cover'
     }
 
